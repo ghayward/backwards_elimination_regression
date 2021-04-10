@@ -66,7 +66,7 @@ def backwardElimination(x, sl):
 SL = 0.000001  #most recent one = 0.000001  #old one = 0.00001
 X_Pruned = backwardElimination(X, SL)
 
-X_Pruned.head(5) #take a peak
+X_Pruned.head(5) #take a peek
 
 
 X_Pruned = add_constant(X_Pruned)
