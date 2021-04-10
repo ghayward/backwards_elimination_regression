@@ -30,8 +30,10 @@ Pruned Linear Regression (Pruned via P-Value Backward Elimination)
 y = df.target_dependent_variable
 X = df.drop(['target_dependent_variable_name'], axis = 1) #so everything except the dependent variable
 X = add_constant(X)
-In [8]:
+
+
 regressor_OLS = sm.OLS(endog = y, exog = X).fit()
+
 
 def pass_the_p_s(x, sl):
     selected_columns = []
@@ -46,6 +48,7 @@ def pass_the_p_s(x, sl):
        ,key = lambda x: abs(x[1]),reverse=False)[:50], columns=['Feature', 'p-Value'])
     return pass_them_p_s
 
+
 def backwardElimination(x, sl): 
     numCols = len(x.columns) 
     for i in range(numCols): 
@@ -58,8 +61,10 @@ def backwardElimination(x, sl):
     regressor_OLS.summary()
     return x
 
+
 SL = 0.000001  #most recent one = 0.000001  #old one = 0.00001
 X_Pruned = backwardElimination(X, SL)
+
 
 X_Pruned = add_constant(X_Pruned)
 pruned_regressor_OLS = sm.OLS(endog = y, exog = X_Pruned).fit()
