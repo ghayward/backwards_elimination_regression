@@ -48,6 +48,7 @@ def pass_the_p_s(x, sl):
        ,key = lambda x: abs(x[1]),reverse=False)[:50], columns=['Feature', 'p-Value'])
     return pass_them_p_s
 
+pass_the_p_s(X, 0.05).head(5) #run this just to take a peek
 
 def backwardElimination(x, sl): 
     numCols = len(x.columns) 
@@ -64,6 +65,8 @@ def backwardElimination(x, sl):
 
 SL = 0.000001  #most recent one = 0.000001  #old one = 0.00001
 X_Pruned = backwardElimination(X, SL)
+
+X_Pruned.head(5) #take a peak
 
 
 X_Pruned = add_constant(X_Pruned)
